@@ -15,6 +15,10 @@
 	'use strict';
 	
 	if('<%=msgFlag%>' == 'ok') alert("<%=mid%>님 방문을 환영합니다.");
+	else {
+		alert("로그인후 사용해 주세요");
+		location.href='<%=request.getContextPath()%>/study/0806/t07.jsp';
+	}
 	
 	function logoutCheck() {
 		let ans = confirm("로그아웃 하시겠습니까?");

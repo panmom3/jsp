@@ -2,6 +2,7 @@ package study.j0806;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/j0806/T08")
-public class T08 extends HttpServlet {
+@WebServlet("/j0806/T11")
+public class T11 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
@@ -58,6 +59,23 @@ public class T08 extends HttpServlet {
 		// 서버에 정상적으로 처리된 자료(찍어본 자료)를 view(JSP)페이지로 전송시켜서 예쁘게 출력시켜준다.
 		content = content.replace("\n","<br/>");
 		
-		request.getRequestDispatcher("/study/0806/t08Ok.jsp?name="+name+"&age="+age+"&gender="+gender+"&hobby="+hobby+"&job="+job+"&mountain="+mountain+"&content="+content+"&fileName="+fileName).forward(request, response);
+		//request저장소 
+		request.setAttribute("name", name);
+		request.setAttribute("age", age);
+		request.setAttribute("gender", gender);
+		request.setAttribute("hobby", hobby);
+		request.setAttribute("job", job);
+		request.setAttribute("mountain", mountain);
+		request.setAttribute("content", content);
+		request.setAttribute("fileName", fileName);
+		
+		//request.setAttribute("message", "");
+		//request.setAttribute("url", request.getContextPath()+"/study/0806/t11Ok.jsp");
+		
+		String viewPage = "/study/0806/t11Ok.jsp";
+		//String viewPage = "/include/message.jsp";
+	  
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+	  dispatcher.forward(request, response);
 	}
 }
