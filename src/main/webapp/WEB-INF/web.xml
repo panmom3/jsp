@@ -9,4 +9,72 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- Controller처리 -->
+  <servlet>
+  	<servlet-name>Test3</servlet-name>
+  	<servlet-class>study2.test.Test3</servlet-class>
+  	<!-- 사용불가(같은곳으로 호출됨)
+  	<servlet-name>Test4</servlet-name>
+  	<servlet-class>study2.test.Test4</servlet-class>
+  	-->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Test3</servlet-name>
+  	<url-pattern>/study2/T3</url-pattern>
+  	<!-- 
+  	<servlet-name>Test4</servlet-name>
+  	<url-pattern>/study2/Tes4</url-pattern>
+  	 -->
+  </servlet-mapping>
+  <!-- 
+  <servlet>
+  	<servlet-name>Test4</servlet-name>
+  	<servlet-class>study2.test.Test4</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Test4</servlet-name>
+  	<url-pattern>/study2/Test4</url-pattern>
+  </servlet-mapping>
+	-->
+	
+	<!-- 초기값(공통변수) 미리 설정해두기 -->
+	<context-param>
+		<param-name>officeName</param-name>
+		<param-value>Green Company</param-value>
+	</context-param>
+	<context-param>
+		<param-name>officeEmail</param-name>
+		<param-value>www.green.com</param-value>
+	</context-param>
+	
+	<!-- 특정 서블릿에 초기값 할당 -->
+	<servlet>
+		<servlet-name>springGroup</servlet-name>
+		<servlet-class>study2.init.OfficeInit</servlet-class>
+		<init-param>
+			<param-name>className</param-name>
+			<param-value>인사과</param-value>
+		</init-param>
+		<init-param>
+			<param-name>mid</param-name>
+			<param-value>admin</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springGroup</servlet-name>
+		<url-pattern>/springGroup</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Filter 처리(controller앞단에서 처리(제어)한다. 
+	<filter>
+		<filter-name>filterTest</filter-name>
+		<filter-class>study2.filter.FilterTest</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filterTest</filter-name>
+		<url-pattern>/study2/filter/T1NO</url-pattern>
+	</filter-mapping>
+	-->
+	
 </web-app>

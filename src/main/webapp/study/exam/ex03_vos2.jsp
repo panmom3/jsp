@@ -14,7 +14,7 @@
 <body>
 <p><br/></p>
 <div class="container">
-  <form name="myform" method="post" action="">
+  <form name="myform" method="post" action="<%=request.getContextPath() %>/exam/Ex03_2">
   	
   </form>
   

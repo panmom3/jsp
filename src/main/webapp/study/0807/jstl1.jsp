@@ -165,35 +165,36 @@
   	${st.index} / ${st.count} : ${st.current} : ${st.first} / ${st.last}<br/>
   </c:forEach>
   <br/>
-	<h4>images1 폴더에 저장된 그림 5장을 출력하시오.</h4>
+	<h4>images 폴더에 저장된 그림 5장을 출력하시오.</h4>
 	<c:forEach var="i" begin="1" end="5">
-		그림${i} : <img src="${pageContext.request.contextPath}/images/${i}.jpg" width="150px">
+	  그림${i}:<img src="${pageContext.request.contextPath}/images/${i}.jpg" width="150px"/> &nbsp;
 	</c:forEach>
-	<h4>images2 폴더에 저장된 그림 5장을 출력하시오.</h4>
-	<c:set var="img" value="1/2/3/4/5" />
+	<br/>
+  <c:set var="img" value="1/2/3/4/5" />
   <c:forTokens var="i" items="${img}" delims="/" varStatus="st">
-  	그림${i} : <img src="${pageContext.request.contextPath}/images/${i}.jpg" width="150px">
-  	<c:if test="${st.count % 2 == 0}"><br/></c:if>
+	  그림${i}:<img src="${pageContext.request.contextPath}/images/${i}.jpg" width="150px"/> &nbsp;
+	  <c:if test="${st.count % 2 == 0}"><br/></c:if>
   </c:forTokens>
   <br/>
- <%
- 		String[][] members = {
- 				{"홍길동","25","서울"},
- 				{"김말숙","33","청주"},
- 				{"이기자","19","제주"},
- 				{"강감찬","55","광주"},
- 				{"김연아","35","서울"}
- 		};
- 		pageContext.setAttribute("members", members);
- %> 
- 	<hr/>
-  <c:forEach var="member" items="${members}">  
-  	<c:forEach var="m" items="${member}">
-  			${m} /
-  	</c:forEach>
+<%
+  String[][] members = {
+  		{"홍길동","25","서울"},
+  		{"김말숙","33","청주"},
+  		{"이기자","19","제주"},
+  		{"강감찬","55","광주"},
+  		{"김연아","19","서울"}
+  };
+	pageContext.setAttribute("members", members);
+%>
+  <hr/>
+  <c:forEach var="member" items="${members}">
+    <c:forEach var="m" items="${member}">
+    	${m} /
+    </c:forEach>
+    <br/>
   </c:forEach>
-  <hr>
-   <div class="border p-3">
+  <hr/>
+  <div class="border p-3">
     <form name="myform" method="post" action="${pageContext.request.contextPath}/j0807/JSTLtest">
       <div>성명
         <input type="text" name="name" id="name" value="이기자" class="form-control"/>
@@ -201,14 +202,14 @@
       <div>나이
         <input type="number" name="age" id="age" value="22" class="form-control"/>
       </div>
-      <div class="mb-3">성별
-  	  <input type="radio" name="gender" value="남자" class="me-1" />남자 &nbsp;
-  	  <input type="radio" name="gender" value="여자" class="me-1" checked />여자
-  	</div>
+			<div class="mb-3">성별 &nbsp;&nbsp;
+	  	  <input type="radio" name="gender" value="남자" class="me-1" />남자 &nbsp;
+	  	  <input type="radio" name="gender" value="여자" class="me-1" checked />여자
+	  	</div>
 	  	<div class="mb-3">직업
 	  	  <select name="job" id="job" class="form-control">
 	  	    <option value="">선택</option>
-	  	    <option>회사원</option>
+	  	    <option selected>회사원</option>
 	  	    <option>공무원</option>
 	  	    <option>군인</option>
 	  	    <option>의사</option>
@@ -228,30 +229,30 @@
   	성별 : ${vo.gender}<br/>
   	직업 : ${vo.job}<br/>
   </div>
-  <hr>
+  <hr/>
   <table class="table table-hover">
-  	<tr class="table-secondary">
-  		<th>번호</th>
-  		<th>성명</th>
-  		<th>나이</th>
-  		<th>성별</th>
-  		<th>직업</th>
-  	</tr>
-  	<c:forEach var="vo" items="${vos}" varStatus="st">
-  		<tr>
-  			<td>${st.count}</td>
-  			<td>${vo.name}</td>
-  			<td>${vo.age}</td>
-  			<td>${vo.gender}</td>
-  			<td>${vo.job}</td>
-  		</tr>
-  	</c:forEach>
+    <tr class="table-secondary">
+      <th>번호</th>
+      <th>성명</th>
+      <th>나이</th>
+      <th>성별</th>
+      <th>직업</th>
+    </tr>
+    <c:forEach var="vo" items="${vos}" varStatus="st">
+      <tr>
+        <td>${st.count}</td>
+        <td>${vo.name}</td>
+        <td>${vo.age}</td>
+        <td>${vo.gender}</td>
+        <td>${vo.job}</td>
+      </tr>
+    </c:forEach>
   </table>
   <hr/>
-  ===>>> URL이동 : 자바스크립트? location.href=''; => redirect url='경로'
-  <c:redirect url='https://www.naver.com'/>
+  ===>>> URL이동 : 자바스크립트? location.hrer='';  ==>> redirect url = '경로'
+  <%-- <c:redirect url='https://www.naver.com'/> --%>
   <c:redirect url='https://www.naver.com'>
-  	<c:param name="name" value="홍길동" />
+    <c:param name="name" value="홍길동" />
   </c:redirect>
 </div>
 <p><br/></p>
