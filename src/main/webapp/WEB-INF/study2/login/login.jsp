@@ -33,8 +33,8 @@
           </div>
 	    		<div style="font-size:0.8em">
 	    			<input type="checkbox" name="idSave" checked /> 아이디 저장 /
-	    			<!-- <a href="#" class="text-decoration-none text-dark link-primary">아이디찾기</a> / -->
-	    			<a href="#" class="text-decoration-none text-dark link-primary badge bg-danger">아이디찾기</a> /
+	    			<!-- <a href="#" class="text-decoration-none text-white link-primary badge bg-danger">아이디찾기</a> / -->
+	    			<a href="#" class="text-decoration-none text-dark link-primary">아이디찾기</a> /
 	    			<a href="#" class="text-decoration-none text-dark link-primary">비밀번호찾기</a>
 	    		</div>
         </td>

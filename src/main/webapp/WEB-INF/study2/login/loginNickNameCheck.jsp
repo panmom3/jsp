@@ -21,14 +21,13 @@
     	let nickName = childForm.nickName.value;
     	
     	if(nickName.trim() == "") {
-    		alert("닉네임를 입력하세요!");
+    		alert("닉네임을 입력하세요!");
     		childForm.nickName.focus();
     	}
     	else {
     		childForm.submit();
     	}
     }
-   
   </script>
 </head>
 <body>
@@ -40,10 +39,10 @@
     <p><input type="button" value="창닫기" onclick="sendCheck()" class="btn btn-secondary btn-sm" /></p>
   </c:if>
   <c:if test="${res != 1}">
-    <h5><span style="color:blue; font-weight:bolder">${nickName}</span> 닉네임은 이미 사용중인 닉네임입니다.</h5>
-    <form name="childForm" method="post" action="${ctp}/study2/login/LoginNickCheck">
+    <h5><span style="color:blue; font-weight:bolder">${nickName}</span> 닉네임은 이미 사용중인 아이디입니다.</h5>
+    <form name="childForm" method="post" action="${ctp}/study2/login/LoginNickNameCheck">
     	<div class="input-group mt-3">
-    	  <input type="text" name="mid" class="form-control" autofocus required />
+    	  <input type="text" name="nickName" class="form-control" autofocus required />
     	  <input type="button" value="닉네임재검색" onclick="nickNameCheck()" class="btn btn-secondary btn-sm"/>
     	</div>
     </form>

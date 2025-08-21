@@ -4,8 +4,8 @@ public class LoginVO {
 	private int idx;
 	private String mid;
 	private String pwd;
-	private String name;
 	private String nickName;
+	private String name;
 	private int age;
 	private String gender;
 	private String address;
@@ -58,11 +58,10 @@ public class LoginVO {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
+	
 	@Override
 	public String toString() {
-		return "LoginVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", nickName=" + nickName
+		return "LoginVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", nickName=" + nickName + ", name=" + name
 				+ ", age=" + age + ", gender=" + gender + ", address=" + address + "]";
 	}
-	
-	
 }

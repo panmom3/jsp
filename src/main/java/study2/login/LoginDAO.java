@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginDAO {
-	private Connection conn = null;  //DB와 연결(접속) 을 담당하는 객체.
-	private PreparedStatement pstmt = null;  //SQL을 실행하는 객체.
-	private ResultSet rs = null;  //SELECT 쿼리 실행 결과(테이블 형태)를 저장하는 객체.
+
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
 	
 	String sql = "";
 	LoginVO vo = null;
@@ -31,28 +32,37 @@ public class LoginDAO {
 		}
 	}
 	
-	// conn 반납
+	// conn반납
 	public void connClose() {
 		if(conn != null) {
-			try {conn.close();} catch (SQLException e) {}
-		}
-	}
-	// pstmt 반납
-	public void pstmtClose() {
-		if(pstmt != null) {
-			try {pstmt.close();} catch (SQLException e) {}
-		}
-	}
-	//rs 반납
-	public void rsClose() {
-		if(rs != null) {
-			try {rs.close();pstmt.close();} catch (SQLException e) {}
+			try {
+				conn.close();
+			} catch (SQLException e) {}
 		}
 	}
 	
+	// pstmt반납
+	public void pstmtClose() {
+		if(pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {}
+		}
+	}
+	
+	// rs반납
+	public void rsClose() {
+		if(rs != null) {
+			try {
+				rs.close();
+				pstmtClose();
+			} catch (SQLException e) {}
+		}
+	}
+
 	// 아이디 검색(아이디 중복체크)
 	public LoginVO getLoginIdCheck(String mid) {
-		vo = new LoginVO(); 
+		vo = new LoginVO();
 		try {
 			sql = "select * from friend where mid=?";
 			pstmt = conn.prepareStatement(sql);
@@ -70,15 +80,16 @@ public class LoginDAO {
 				vo.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL오류(getLoginIdCheck)" + e.getMessage());
+			System.out.println("SQL오류(getLoginIdCheck)~~" + e.getMessage());
 		} finally {
 			rsClose();
 		}
 		return vo;
 	}
 
+	// 닉네임 중복체크
 	public LoginVO getLoginNickNameCheck(String nickName) {
-		vo = new LoginVO(); 
+		vo = new LoginVO();
 		try {
 			sql = "select * from friend where nickName=?";
 			pstmt = conn.prepareStatement(sql);
@@ -96,14 +107,15 @@ public class LoginDAO {
 				vo.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL오류(getLoginNickNameCheck)" + e.getMessage());
+			System.out.println("SQL오류(getLoginNickNameCheck)~~" + e.getMessage());
 		} finally {
 			rsClose();
 		}
 		return vo;
 	}
-	// 회원가입처리
-	public int setLoginJoinOk(LoginVO vo2) {
+
+	// 회원 가입 처리
+	public int setLoginJoinOk(LoginVO vo) {
 		int res = 0;
 		try {
 			sql = "insert into friend values (default,?,?,?,?,?,?,?)";
@@ -123,7 +135,7 @@ public class LoginDAO {
 		}
 		return res;
 	}
-	
+
 	// 전체 회원 리스트
 	public List<LoginVO> getLoginList() {
 		List<LoginVO> vos = new ArrayList<LoginVO>();
@@ -131,6 +143,7 @@ public class LoginDAO {
 			sql = "select * from friend order by idx desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				vo = new LoginVO();
 				vo.setIdx(rs.getInt("idx"));
@@ -151,4 +164,24 @@ public class LoginDAO {
 		}
 		return vos;
 	}
+	// 회원정보수정
+	public int setLoginUpdate(LoginVO vo) {
+		int res = 0;
+		try {
+			sql = "UPDATE friend SET name=?, age=?, gender=?, address=? WHERE mid=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setInt(2, vo.getAge());
+			pstmt.setString(3, vo.getGender());
+			pstmt.setString(4, vo.getAddress());
+			pstmt.setString(5, vo.getMid());
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL오류(setLoginUpdate)~~" + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+	
 }

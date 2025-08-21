@@ -32,7 +32,7 @@ public class LoginOk extends HttpServlet {
 		
 		if(vo.getMid() != null) {
 			// 비밀번호 복호화(X), 로그인시 입력된 비밀번호를 salt값과 함께 암호화 시킨후 DB비밀번호와 비교한다.
-			String salt = vo.getPwd().substring(0, 5);
+			String salt = vo.getPwd().substring(0, 4);
 			pwd = salt + (Integer.parseInt(pwd) ^ Integer.parseInt(salt)) + "";
 			
 			if(vo.getPwd().equals(pwd)) {

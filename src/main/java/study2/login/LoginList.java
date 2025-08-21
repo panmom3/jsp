@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,6 @@ public class LoginList extends HttpServlet {
 		List<LoginVO> vos = dao.getLoginList();
 		
 		request.setAttribute("vos", vos);
-		
 		
 		String viewPage = "/WEB-INF/study2/login/loginList.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

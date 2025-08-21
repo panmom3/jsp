@@ -19,16 +19,17 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String mid = (String) session.getAttribute("sMid"); //메세지에 사용
-		session.invalidate();  //세션 제거
+		String mid = (String) session.getAttribute("sMid");
+		session.invalidate();
 		
-//		String viewPage = "/WEB-INF/study2/login/login.jsp";
+		//String viewPage = "/WEB-INF/study2/login/login.jsp";
+//		String viewPage = "/study2/login/Login";
 //		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 //		dispatcher.forward(request, response);
 		
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('"+mid+"님 로그아웃 되었습니다.');");
+		out.println("alert('"+mid+"님 로그아웃 되셨습니다.');");
 		out.println("location.href='"+request.getContextPath()+"/study2/login/Login';");
 		out.println("</script>");
 	}

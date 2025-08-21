@@ -28,7 +28,6 @@
     		childForm.submit();
     	}
     }
-   
   </script>
 </head>
 <body>

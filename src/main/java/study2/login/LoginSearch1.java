@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,25 +24,23 @@ public class LoginSearch1 extends HttpServlet {
 		
 		LoginVO vo = dao.getLoginIdCheck(mid);
 		
-		Map<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("mid", vo.getMid());
 		map.put("nickName", vo.getNickName());
 		map.put("name", vo.getName());
 		map.put("age", vo.getAge()+"");
 		map.put("gender", vo.getGender());
 		map.put("address", vo.getAddress());
-		System.out.println("map :" + map);
+		System.out.println("map : " + map);
 		
 		// map형식의 자료를 JSON형식으로 변환
-	  JSONObject jObj = new JSONObject(map);
-	  System.out.println("jObj :" + jObj);
-	  
-	  response.getWriter().write(jObj + "");  //문자열변환 + ""
-	  
-	  // JSON객체를 문자열로 변환
-//	  String str = jObj.toJSONString();
-//	  System.out.println("str :" + str);
-//		
+		JSONObject jObj = new JSONObject(map);
+		System.out.println("jObj : " + jObj);
+		response.getWriter().write(jObj + "");
+		
+		// JSON객체를 문자열로 변환
+//		String str = jObj.toJSONString();
+//		System.out.println("str : " + str);
 //		response.getWriter().write(str);
 	}
 	
