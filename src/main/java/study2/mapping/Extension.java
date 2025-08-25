@@ -12,21 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 @WebServlet("*.do")
 public class Extension extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("url : " + request.getRequestURL());
 		//System.out.println("uri : " + request.getRequestURI());
 		
 		String uri = request.getRequestURI();
-		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf("."));  //.do 앞에 이름 추출
-		System.out.println(com);
+		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf("."));
+		System.out.println("com : " + com);
 		
 		String msg = "";
 		
 		if(com.equals("home")) {
 			msg = "home";
-			//command객체
 		}
 		else if(com.equals("guest")) {
 			msg = "guest";
@@ -45,4 +44,5 @@ public class Extension extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 	}
+	
 }

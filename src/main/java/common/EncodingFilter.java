@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 //@WebFilter("/study2/filter/T1NO")
-@WebFilter("/*") 
+@WebFilter("/*")
 public class EncodingFilter implements Filter {
 
 	@Override
@@ -23,5 +23,5 @@ public class EncodingFilter implements Filter {
 		chain.doFilter(request, response);
 		
 	}
-	
+
 }

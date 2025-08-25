@@ -18,7 +18,7 @@ public class Extension2Controller extends HttpServlet {
 		String viewPage = "/WEB-INF/study2/mapping/";
 		
 		String uri = request.getRequestURI();
-		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf("."));  //.do 앞에 이름 추출
+		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf("."));
 		
 		if(com.equals("home")) {
 			viewPage += "home";
@@ -31,14 +31,16 @@ public class Extension2Controller extends HttpServlet {
 		}
 		else if(com.equals("pds")) {
 			viewPage += "pds";
-		} else {
+		}
+		else {
 			viewPage += "extension2";
 		}
 		viewPage += ".jsp";
-		System.out.println(viewPage);
-
+		System.out.println("viewPage : " + viewPage);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		
 	}
+	
 }
-

@@ -9,6 +9,8 @@
   <title>login.jsp</title>
 </head>
 <body>
+<jsp:include page="/include/header.jsp" />
+<jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
   <form name="myform" method="post" action="${ctp}/study2/login/LoginOk">
@@ -43,5 +45,6 @@
   </form>
 </div>
 <p><br/></p>
+<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

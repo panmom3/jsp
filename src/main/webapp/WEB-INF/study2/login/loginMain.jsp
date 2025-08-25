@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -17,17 +18,17 @@
     
     function loginList() {
     	$.ajax({
-    		url : '${ctp}/study2/login/LoginList2',
+    		url  : '${ctp}/study2/login/LoginList2',
     		type : 'get',
     		success:function(res) {
     			console.log("res", res);
-    			$('#demo').html(res);
+    			$("#demo").html(res);
     			
     			let js = JSON.parse(res);
-    			console.log(js);
+    			console.log("js : ", js);
     			
     			let tMid='아이디 : ', tNickName='닉네임 : ', tName='성명 : ', tAge='나이 : ', tGender='성별 : ', tAddress='주소 : ';
-    			for(let j of js) {    //of 값을 가져옴
+    			for(let j of js) {
     				tMid += j.mid + "/";
     				tNickName += j.nickName + "/";
     				tName += j.name + "/";
@@ -45,23 +46,20 @@
     			demo2.innerHTML = str;
     			
     			// 자바객체로 변환된 자료를 테이블에 동적폼으로 출력시켜보자.
-    			str = '<h4>회원리스트</h4>';
+    			str = '<h4 class="text-center">회원 리스트</h4>'
     			str += '<table class="table table-hover text-center">';
-    			str += '<tr>';
-					str += '<th>아이디</th><th>닉네임</th><th>성명</th><th>나이</th><th>성별</th><th>주소</th>';
-					str += '</tr>';
-					for(let j of js){
-							str += '<tr>';
-	    				str += '<td>'+j.mid+'</td>';
-	    				str += '<td>'+j.nickName+'</td>';
-	    				str += '<td>'+j.name+'</td>';
-	    				str += '<td>'+j.age+'</td>';
-	    				str += '<td>'+j.gender+'</td>';
-	    				str += '<td>'+j.address+'</td>';
-	    				str += '</tr>';
-	    		}
+    			str += '<tr class="table-secondary"><th>아이디</th><th>닉네임</th><th>성명</th><th>나이</th><th>성별</th><th>주소</th></tr>';
+    			for(let j of js) {
+	    			str += '<tr>';
+	    			str += '<td>'+j.mid+'</td>';
+	    			str += '<td>'+j.nickName+'</td>';
+	    			str += '<td>'+j.name+'</td>';
+	    			str += '<td>'+j.age+'</td>';
+	    			str += '<td>'+j.gender+'</td>';
+	    			str += '<td>'+j.address+'</td>';
+	    			str += '</tr>';
+    			}
     			str += '</table>';
-    			
     			demo3.innerHTML = str;
     		},
     		error : function() { alert("전송오류!"); }
@@ -70,17 +68,17 @@
     
     function loginList3() {
     	$.ajax({
-    		url : '${ctp}/study2/login/LoginList3',
+    		url  : '${ctp}/study2/login/LoginList3',
     		type : 'get',
     		success:function(res) {
     			console.log("res", res);
-    			$('#demo').html(res);
+    			$("#demo").html(res);
     			
     			let js = JSON.parse(res);
-    			console.log(js);
+    			console.log("js : ", js);
     			
     			let tMid='아이디 : ', tNickName='닉네임 : ', tName='성명 : ', tAge='나이 : ', tGender='성별 : ', tAddress='주소 : ';
-    			for(let j of js) {    //of 값을 가져옴
+    			for(let j of js) {
     				tMid += j.mid + "/";
     				tNickName += j.nickName + "/";
     				tName += j.name + "/";
@@ -98,23 +96,20 @@
     			demo2.innerHTML = str;
     			
     			// 자바객체로 변환된 자료를 테이블에 동적폼으로 출력시켜보자.
-    			str = '<h4>회원리스트</h4>';
+    			str = '<h4 class="text-center">회원 리스트</h4>'
     			str += '<table class="table table-hover text-center">';
-    			str += '<tr>';
-					str += '<th>아이디</th><th>닉네임</th><th>성명</th><th>나이</th><th>성별</th><th>주소</th>';
-					str += '</tr>';
-					for(let j of js){
-							str += '<tr>';
-	    				str += '<td>'+j.mid+'</td>';
-	    				str += '<td>'+j.nickName+'</td>';
-	    				str += '<td>'+j.name+'</td>';
-	    				str += '<td>'+j.age+'</td>';
-	    				str += '<td>'+j.gender+'</td>';
-	    				str += '<td>'+j.address+'</td>';
-	    				str += '</tr>';
-	    		}
+    			str += '<tr class="table-secondary"><th>아이디</th><th>닉네임</th><th>성명</th><th>나이</th><th>성별</th><th>주소</th></tr>';
+    			for(let j of js) {
+	    			str += '<tr>';
+	    			str += '<td>'+j.mid+'</td>';
+	    			str += '<td>'+j.nickName+'</td>';
+	    			str += '<td>'+j.name+'</td>';
+	    			str += '<td>'+j.age+'</td>';
+	    			str += '<td>'+j.gender+'</td>';
+	    			str += '<td>'+j.address+'</td>';
+	    			str += '</tr>';
+    			}
     			str += '</table>';
-    			
     			demo3.innerHTML = str;
     		},
     		error : function() { alert("전송오류!"); }
@@ -190,16 +185,13 @@
     				str += '<th>성명</th>';
     				str += '<td><input type="text" name="name" value="'+temp[3]+'" class="form-control"/></td>';
     				str += '</tr>';
-    				str += '<tr>';
     				str += '<th>나이</th>';
     				str += '<td><input type="number" name="age" value="'+temp[4]+'" class="form-control"/></td>';
     				str += '</tr>';
-    				str += '<tr>';
     				str += '<th>성별</th>';
     				str += '<td><input type="radio" name="gender" value="남자" />남자 ';
     				str += '    <input type="radio" name="gender" value="여자" />여자</td>';
     				str += '</tr>';
-    				str += '<tr>';
     				str += '<th>주소</th>';
     				str += '<td><input type="text" name="address" value="'+temp[6]+'" class="form-control"/></td>';
     				str += '</tr>';
@@ -207,7 +199,7 @@
     				str += '<td colspan="2" class="text-center"><input type="submit" value="정보수정" class="btn btn-primary"/></td>';
     				str += '</tr>';
     				str += '</table>';
-    				//str += '<input type="hidden" name="idx" value="'+temp[0]+'" />';
+    				// str += '<input type="hidden" name="idx" value="'+temp[0]+'" />';
     				str += '<input type="hidden" name="mid" value="'+temp[1]+'" />';
     				str += '</form>';
     				demo.innerHTML = str;
@@ -219,6 +211,8 @@
   </script>
 </head>
 <body>
+<jsp:include page="/include/header.jsp" />
+<jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
   <h2>회원 전용방</h2>
@@ -248,5 +242,6 @@
   </div>
 </div>
 <p><br/></p>
+<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

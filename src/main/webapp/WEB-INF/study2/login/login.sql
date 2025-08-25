@@ -24,3 +24,5 @@ select * from friend;
 ALTER TABLE friend ADD UNIQUE KEY(nickName);
  -- UNIQUE KEY 삭제
 ALTER TABLE friend DROP INDEX name;
+
+DELETE FROM friend WHERE mid = 'je1234';

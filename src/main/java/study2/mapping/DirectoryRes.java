@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 @WebServlet("/study2/mapping/DirectoryRes")
 public class DirectoryRes extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int su1 = (request.getParameter("su1")==null || request.getParameter("su1").equals("") ? 0 : Integer.parseInt(request.getParameter("su1")));
-		int su2 = (request.getParameter("su2")==null || request.getParameter("su2").equals("") ? 0 : Integer.parseInt(request.getParameter("su2")));
+		int su1 = (request.getParameter("su1")==null || request.getParameter("su1").equals("")) ? 0 : Integer.parseInt(request.getParameter("su1"));
+		int su2 = (request.getParameter("su2")==null || request.getParameter("su2").equals("")) ? 0 : Integer.parseInt(request.getParameter("su2"));
 		int hap = su1 + su2;
 		int cha = su1 - su2;
-		System.out.println("ddddd");
 		
 		request.setAttribute("su1", su1);
 		request.setAttribute("su2", su2);
@@ -30,6 +29,6 @@ public class DirectoryRes extends HttpServlet {
 		String viewPage = "/WEB-INF/study2/mapping/directory.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-		
 	}
+	
 }
