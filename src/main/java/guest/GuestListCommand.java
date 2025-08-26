@@ -18,11 +18,15 @@ public class GuestListCommand implements CommonInterface {
 		// 1. 현재 페이지번호를 구해온다.
 		int pag = request.getParameter("pag")==null ? 1 : Integer.parseInt(request.getParameter("pag"));
 		
+		
 		// 2. 한 페이지 분량을 구한다.(여기선 1Page당 5건으로 한다.)
 		int pageSize = request.getParameter("pageSize")==null ? 5 : Integer.parseInt(request.getParameter("pageSize"));
 		
 		// 3. 총 레코드 건수를 구한다.(sql명령어(함수)중 count함수를 이용)
 		int totRecCnt = dao.getTotRecCnt();
+		
+		int pageCb = request.getParameter("pageCb")==null ? 1 : Integer.parseInt(request.getParameter("pageCb"));
+		pageCb =  pageSize + 5;
 		
 		// 4. 총 페이지 건수를 구한다.
 		int totPage = (int) Math.ceil(totRecCnt / pageSize);
@@ -55,6 +59,7 @@ public class GuestListCommand implements CommonInterface {
 		request.setAttribute("blockSize", blockSize);
 		request.setAttribute("curBlock", curBlock);
 		request.setAttribute("lastBlock", lastBlock);
+		request.setAttribute("pageCb", pageCb);
 		
 		request.setAttribute("vos", vos);
 	}

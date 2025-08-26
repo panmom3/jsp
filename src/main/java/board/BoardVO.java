@@ -79,11 +79,11 @@ public class BoardVO {
 	public void setComplaint(String complaint) {
 		this.complaint = complaint;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "boardVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", title=" + title + ", content="
+		return "BoardVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", title=" + title + ", content="
 				+ content + ", hostIp=" + hostIp + ", openSw=" + openSw + ", readNum=" + readNum + ", wDate=" + wDate
-				+ ", good=" + good + ", compalaint=" + complaint + "]";
+				+ ", good=" + good + ", complaint=" + complaint + "]";
 	}
 }

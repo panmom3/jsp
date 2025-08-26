@@ -15,7 +15,7 @@ import common.CommonInterface;
 @SuppressWarnings("serial")
 @WebServlet("*.bo")
 public class BoardController extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CommonInterface command = null;
@@ -45,9 +45,25 @@ public class BoardController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message";
 		}
+		else if(com.equals("BoardContent")) {
+			command = new BoardContentCommand();
+			command.execute(request, response);
+			viewPage += "boardContent";
+		}
+		else if(com.equals("BoardGoodCheck")) {
+			command = new BoardGoodCheckCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("BoardGoodCheckPlusMinus")) {
+			command = new BoardGoodCheckPlusMinusCommand();
+			command.execute(request, response);
+			return;
+		}
 		viewPage += ".jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
+	
 }

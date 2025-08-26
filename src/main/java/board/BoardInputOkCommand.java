@@ -20,6 +20,7 @@ public class BoardInputOkCommand implements CommonInterface {
 		String openSw = request.getParameter("openSw")==null ? "" : request.getParameter("openSw");
 		
 		BoardVO vo = new BoardVO();
+		
 		vo.setMid(mid);
 		vo.setNickName(nickName);
 		vo.setTitle(title);
@@ -34,8 +35,9 @@ public class BoardInputOkCommand implements CommonInterface {
 		if(res != 0) {
 			request.setAttribute("message", "게시글이 등록되었습니다.");
 			request.setAttribute("url", "BoardList.bo");
-		} else {
-			request.setAttribute("message", "게시글이 등록실패~~");
+		}
+		else {
+			request.setAttribute("message", "게시글 등록실패~~");
 			request.setAttribute("url", "BoardInput.bo");
 		}
 	}
