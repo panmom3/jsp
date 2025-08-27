@@ -21,7 +21,7 @@ public class BoardListCommand implements CommonInterface {
 		int totPage = (int) Math.ceil((double)totRecCnt / pageSize);
 		int startIndexNo = (pag - 1) * pageSize;
 		int curScrStartNo = totRecCnt - startIndexNo;
-		
+
 		List<BoardVO> vos = dao.getBoardList(startIndexNo, pageSize);
 		
 		int blockSize = 3;

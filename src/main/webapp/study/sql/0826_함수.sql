@@ -148,7 +148,9 @@ select now(), to_days(now()) - to_days('2025-8-1');
 select name, ipsail, to_days(now()) - to_days(ipsail) from insa;
 
 select now(), datediff(now(), '2025-8-1');
+select now(), datediff(now(), wDate) from board order by idx desc;
 select name, ipsail, datediff(now(), ipsail) from insa;
+
 
 select now(), timediff(now(), '2025-8-26 9:30');
 

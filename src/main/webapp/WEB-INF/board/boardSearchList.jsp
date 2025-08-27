@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="/include/bs5.jsp" />
-  <title>boardList.jsp</title>
+  <title>boardSearchList.jsp</title>
   <script>
     'use strict';
     
@@ -25,19 +25,11 @@
 <div class="container">
 	<table class="table table-borderless m-0 p-0">
 	  <tr>
-	    <td colspan="2"><h2 class="text-center mb-3">게시판 리스트</h2></td>
+	    <td colspan="2"><h2 class="text-center mb-3">게시판 검색 리스트</h2></td>
 	  </tr>
 	  <tr>
-      <td><a href="BoardInput.bo" class="btn btn-success btn-sm">글쓰기</a></td>
-      <td class="text-end">
-        <select name="pageSize" id="pageSize" onchange="pageSizeCheck()">
-          <option ${pageSize==5  ? 'selected' : ''}>5</option>
-          <option ${pageSize==10 ? 'selected' : ''}>10</option>
-          <option ${pageSize==15 ? 'selected' : ''}>15</option>
-          <option ${pageSize==20 ? 'selected' : ''}>20</option>
-          <option ${pageSize==30 ? 'selected' : ''}>30</option>
-        </select>
-      </td>
+      <td>(<font color="blue"><b>${searchStr}</b></font>(으)로 <font color="red"><b>${searchString}</b></font>를 검색한결과 <font color="blue"><b>${fn:length(vos)}</b></font>건이 검색되었습니다.)</td>
+      <td class="text-end"><a href="BoardList.bo" class="btn btn-success btn-sm">돌아가기</a></td>
     </tr>
   </table>
   <table class="table table-hover text-center">
@@ -48,6 +40,7 @@
     	<th>올린날짜</th>
     	<th>조회수(♥)</th>
     </tr>
+    <c:set var="curScrStartNo" value="${fn:length(vos)}"/>
     <c:forEach var="vo" items="${vos}" varStatus="st">
       <tr>
         <td>${curScrStartNo}</td>
@@ -55,14 +48,14 @@
           <c:if test="${vo.openSw == 'NO'}">
             <c:if test="${sMid != vo.mid && sAdmin != 'adminOK'}">(비밀글)</c:if>
             <c:if test="${sMid == vo.mid || sAdmin == 'adminOK'}">
-		          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">
+		          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}&boardFlag=search" class="text-decoration-none text-dark link-primary">
 		            <c:if test="${sAdmin == 'adminOK'}"><font color="red">(비밀글)</font></c:if>${vo.title}
 		          </a>
 		          <c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif" /></c:if>
             </c:if>
           </c:if>
           <c:if test="${vo.openSw != 'NO'}">
-	          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">${vo.title}</a>
+	          <a href="BoardContent.bo?idx=${vo.idx}&boardFlag=search&search=${search}&searchString=${searchString}" class="text-decoration-none text-dark link-primary">${vo.title}</a>
 	          <c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif" /></c:if>
           </c:if>
         </td>
