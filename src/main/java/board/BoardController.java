@@ -90,6 +90,11 @@ public class BoardController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if(com.equals("BoardReplyUpdateOk")) {
+			command = new BoardReplyUpdateOkCommand();
+			command.execute(request, response);
+			return;
+		}
 		viewPage += ".jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

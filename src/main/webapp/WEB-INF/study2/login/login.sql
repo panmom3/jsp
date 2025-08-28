@@ -9,6 +9,7 @@ create table friend (
 	age int default 20,
 	gender char(2) default '여자',
 	address varchar(30),
+	photo varchar(50),    /* 회원사진 */
 	unique key(mid),
 	unique key(nickName)
 );

@@ -33,8 +33,9 @@ select now(), datediff(now(), wDate) from board order by idx desc;
 
 select *, 
 	timestampdiff(hour, wDate, now()) as hour_diff,
-	datediff(now(), wDate) as date_diff
-	from board order by idx desc limit 0,10;
+	datediff(now(), wDate) as date_diff,
+	(select count(*) from boardReply where boardIdx = b.idx) as replyCnt 
+	from board b order by idx desc limit 0,10;
 	
 select * from board order by idx desc;
 --이전글
@@ -61,3 +62,6 @@ desc boardReply;
 insert into boardReply values (default, 18, 'aaa1234','강짱',default,'192.168.50.61',"수고");
 
 select * from boardReply order by idx desc;
+-- idx 18번의 댓글개수 구하기
+select count(*) as replyCnt from boardReply where boardIdx=18 order by idx desc;
+

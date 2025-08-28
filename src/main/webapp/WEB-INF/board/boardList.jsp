@@ -43,7 +43,7 @@
   <table class="table table-hover text-center">
     <tr class="table-secondary">
     	<th>번호</th>
-    	<th>글제목</th>
+    	<th>글제목(댓글수)</th>
     	<th>글쓴이</th>
     	<th>올린날짜</th>
     	<th>조회수(♥)</th>
@@ -56,13 +56,14 @@
             <c:if test="${sMid != vo.mid && sAdmin != 'adminOK'}">(비밀글)</c:if>
             <c:if test="${sMid == vo.mid || sAdmin == 'adminOK'}">
 		          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">
-		            <c:if test="${sAdmin == 'adminOK'}"><font color="red">(비밀글)</font></c:if>${vo.title}
+		            <c:if test="${sAdmin == 'adminOK'}"><font color="red">(비밀글)</font></c:if>${vo.title}<c:if test="${vo.replyCnt != 0}">(${vo.replyCnt})</c:if>
+		          	<c:if test="${vo.replyCnt != 0}">(${vo.replyCnt})</c:if>
 		          </a>
 		          <c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif" /></c:if>
             </c:if>
           </c:if>
           <c:if test="${vo.openSw != 'NO'}">
-	          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">${vo.title}</a>
+	          <a href="BoardContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">${vo.title} <c:if test="${vo.replyCnt != 0}">(${vo.replyCnt})</c:if></a>
 	          <c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif" /></c:if>
           </c:if>
         </td>
