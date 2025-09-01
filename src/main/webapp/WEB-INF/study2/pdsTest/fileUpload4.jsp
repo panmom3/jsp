@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="/include/bs5.jsp" />
-  <title>fileUpload1.jsp</title>
+  <title>fileUpload4.jsp</title>
   <script>
     'use strict';
     
@@ -39,22 +39,13 @@
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>파일 업로드 연습(싱글파일)</h2>
+  <h2>파일 업로드 연습4(멀티파일)</h2>
   <hr/>
-  <form name="myform" method="post" action="FileUploadOk1.st" enctype="multipart/form-data">
-    <div class="input-group">
-      <div class="input-group-text mb-2" style="background-color:#eee">분류</div> 
-      <select name="part" class="form-select mb-2">
-        <option selected>학습</option>
-        <option>여행</option>
-        <option>음식</option>
-        <option>기타</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <input type="file" name="fName" id="file" class="form-control"/>
-      <input type="submit" value="파일전송" class="btn btn-success"/>
-      <!-- <input type="button" value="파일전송" onclick="fCheck()" class="btn btn-success"/> -->
+  <form name="myform" method="post" action="FileUploadOk4.st" enctype="multipart/form-data">
+    <div>
+      <input type="file" name="fName" id="file" multiple class="form-control mb-2"/>
+      <!-- <input type="submit" value="파일전송" class="btn btn-success form-control"/> -->
+      <input type="button" value="파일전송" onclick="fCheck()" class="btn btn-success form-control"/>
     </div>
   </form>
   <hr/>

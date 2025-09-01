@@ -12,9 +12,12 @@ public class PdsVO {
 	private String content;
 	private String openSw;
 	private String pwd;
-	private String hospIp;
+	private String hostIp;
 	private String fDate;
 	private int downNum;
+	
+	private int hour_diff;
+	private int date_diff;
 	
 	public int getIdx() {
 		return idx;
@@ -82,11 +85,11 @@ public class PdsVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getHospIp() {
-		return hospIp;
+	public String getHostIp() {
+		return hostIp;
 	}
-	public void setHospIp(String hospIp) {
-		this.hospIp = hospIp;
+	public void setHostIp(String hostIp) {
+		this.hostIp = hostIp;
 	}
 	public String getfDate() {
 		return fDate;
@@ -100,12 +103,24 @@ public class PdsVO {
 	public void setDownNum(int downNum) {
 		this.downNum = downNum;
 	}
-	@Override
-	public String toString() {
-		return "pdsVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", fName=" + fName + ", fSName=" + fSName
-				+ ", fSize=" + fSize + ", part=" + part + ", title=" + title + ", content=" + content + ", openSw=" + openSw
-				+ ", pwd=" + pwd + ", hospIp=" + hospIp + ", fDate=" + fDate + ", downNum=" + downNum + "]";
+	public int getHour_diff() {
+		return hour_diff;
+	}
+	public void setHour_diff(int hour_diff) {
+		this.hour_diff = hour_diff;
+	}
+	public int getDate_diff() {
+		return date_diff;
+	}
+	public void setDate_diff(int date_diff) {
+		this.date_diff = date_diff;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "PdsVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", fName=" + fName + ", fSName=" + fSName
+				+ ", fSize=" + fSize + ", part=" + part + ", title=" + title + ", content=" + content + ", openSw=" + openSw
+				+ ", pwd=" + pwd + ", hostIp=" + hostIp + ", fDate=" + fDate + ", downNum=" + downNum + ", hour_diff="
+				+ hour_diff + ", date_diff=" + date_diff + "]";
+	}
 }

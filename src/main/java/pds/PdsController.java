@@ -38,6 +38,7 @@ public class PdsController extends HttpServlet {
 			viewPage += "pdsList";
 		}
 		else if(com.equals("PdsInput")) {
+			request.setAttribute("part", request.getParameter("part"));
 			viewPage += "pdsInput";
 		}
 		else if(com.equals("PdsInputOk")) {

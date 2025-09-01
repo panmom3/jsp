@@ -15,7 +15,7 @@
 	        <a class="nav-link" href="BoardList.bo">Board</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="Pds.pds">PDS</a>
+	        <a class="nav-link" href="PdsList.pds">PDS</a>
 	      </li>
 	      <li class="nav-item">
 	        <div class="dropdown">
@@ -30,7 +30,9 @@
 					    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension4.test4">확장자매핑연습4</a></li>
 					    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension5.test5">확장자매핑연습5</a></li>
 					    <li><a class="dropdown-item" href="${ctp}/study2/uuid/Uuid.st">UUID연습</a></li>
-					    <li><a class="dropdown-item" href="${ctp}/study2/pdsTest/PdsTest.st">파일업로드연습</a></li>
+					    <li><a class="dropdown-item" href="${ctp}/study2/pdsTest/PdsTest.st">file업로드연습</a></li>
+					    <li><a class="dropdown-item" href="Sha.st">SHA암호화</a></li>
+					    <li><a class="dropdown-item" href="ModalTest.st">Modal 연습</a></li>
 					  </ul>
 					</div>
 	      </li>

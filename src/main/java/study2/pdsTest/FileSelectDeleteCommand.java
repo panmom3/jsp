@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.CommonInterface;
 
-public class FileDeleteCommand implements CommonInterface {
+public class FileSelectDeleteCommand implements CommonInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fileName = request.getParameter("fileName")==null ? "" : request.getParameter("fileName");
+		String[] selectFileArray = request.getParameter("selectFileArray").split("/");
 		
 		String realPath = request.getServletContext().getRealPath("/images/pdsTest/");
 		
-		File file = new File(realPath + fileName);
-		
 		String res = "0";
-		if(file.exists()) {
-			file.delete();
+		for(int i=0; i<selectFileArray.length; i++) {
+			File file = new File(realPath+selectFileArray[i]);
+			if(file.exists()) file.delete();
 			res = "1";
 		}
 		

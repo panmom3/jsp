@@ -16,14 +16,15 @@
 <div class="container">
   <h2>파일 업로드 연습(COS라이브러리)</h2>
   <hr/>
-  <div class="row">
-    <div class="col"><a href="FileUpload1.st" class="btn btn-success">파일업로드1</a></div>
-    <div class="col"><a href="FileUpload2.st" class="btn btn-primary">파일업로드2</a></div>
-    <div class="col"><a href="FileUpload3.st" class="btn btn-info">파일업로드3</a></div>
+  <div class="row text-center">
+    <div class="col"><a href="FileUpload1.st" class="btn btn-success">파일업로드1(싱글)</a></div>
+    <div class="col"><a href="FileUpload2.st" class="btn btn-primary">파일업로드2(멀티)</a></div>
+    <div class="col"><a href="FileUpload3.st" class="btn btn-info">파일업로드3(멀티)</a></div>
+    <div class="col"><a href="FileUpload4.st" class="btn btn-warning">파일업로드4(멀티)</a></div>
   </div>
   <hr/>
   <div class="row">
-    <div class="col"><a href="FileList.st" class="btn btn-primary form-control">파일목록보기</a></div>
+    <div class="col"><a href="FileList.st" class="btn btn-secondary form-control">파일목록보기</a></div>
   </div>
 </div>
 <p><br/></p>

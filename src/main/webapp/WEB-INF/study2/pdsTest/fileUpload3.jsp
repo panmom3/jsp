@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="/include/bs5.jsp" />
-  <title>fileUpload1.jsp</title>
+  <title>fileUpload3.jsp</title>
   <script>
     'use strict';
     
@@ -32,6 +32,23 @@
     		myform.submit();
     	}
     }
+    
+    // 파일 박스 추가하기
+    let cnt = 1;
+    function fileBoxAppend() {
+    	cnt++;
+    	let fileBox = '';
+    	fileBox += '<div id="fBox'+cnt+'" class="input-group">';
+    	fileBox += '<input type="file" name="fName'+cnt+'" id="file'+cnt+'" class="form-control mb-2"/>';
+    	fileBox += '<input type="button" value="삭제" onclick="deleteBox('+cnt+')" class="btn btn-danger mb-2"/>';
+    	fileBox += '</div>';
+    	$("#fileBox").append(fileBox);
+    }
+    
+    // 파일 박스 삭제
+    function deleteBox(cnt) {
+    	$("#fBox"+cnt).remove();
+    }
   </script>
 </head>
 <body>
@@ -39,21 +56,16 @@
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>파일 업로드 연습(싱글파일)</h2>
+  <h2>파일 업로드 연습3(멀티파일)</h2>
   <hr/>
-  <form name="myform" method="post" action="FileUploadOk1.st" enctype="multipart/form-data">
-    <div class="input-group">
-      <div class="input-group-text mb-2" style="background-color:#eee">분류</div> 
-      <select name="part" class="form-select mb-2">
-        <option selected>학습</option>
-        <option>여행</option>
-        <option>음식</option>
-        <option>기타</option>
-      </select>
+  <form name="myform" method="post" action="FileUploadOk3.st" enctype="multipart/form-data">
+    <div>
+      <input type="button" value="파일박스추가" onclick="fileBoxAppend()" class="btn btn-primary mb-2"/>
+      <input type="file" name="fName1" id="file1" class="form-control mb-2"/>
     </div>
-    <div class="input-group">
-      <input type="file" name="fName" id="file" class="form-control"/>
-      <input type="submit" value="파일전송" class="btn btn-success"/>
+    <div id="fileBox"></div>
+    <div>
+      <input type="submit" value="파일전송" class="btn btn-success form-control"/>
       <!-- <input type="button" value="파일전송" onclick="fCheck()" class="btn btn-success"/> -->
     </div>
   </form>

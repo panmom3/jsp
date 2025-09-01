@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import common.CommonInterface;
-import pds.PdsListCommand;
 import study2.pdsTest.FileDeleteCommand;
 import study2.pdsTest.FileListCommand;
+import study2.pdsTest.FileSelectDeleteCommand;
 import study2.pdsTest.FileUploadOk1Command;
+import study2.pdsTest.FileUploadOk2Command;
+import study2.pdsTest.FileUploadOk3Command;
+import study2.pdsTest.FileUploadOk4Command;
+import study2.pdsTest.JavaFileDownloadCommand;
+import study2.sha.ShaOkCommand;
 import study2.uuid.UuidProcessCommand;
 
 @SuppressWarnings("serial")
@@ -65,6 +70,51 @@ public class StudyController extends HttpServlet {
 			command = new FileDeleteCommand();
 			command.execute(request, response);
 			return;
+		}
+		else if(com.equals("FileSelectDelete")) {
+			command = new FileSelectDeleteCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("JavaFileDownload")) {
+			command = new JavaFileDownloadCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("FileUpload2")) {
+			viewPage += "pdsTest/fileUpload2";
+		}
+		else if(com.equals("FileUploadOk2")) {
+			command = new FileUploadOk2Command();
+			command.execute(request, response);
+			viewPage = "/include/message";
+		}
+		else if(com.equals("FileUpload3")) {
+			viewPage += "pdsTest/fileUpload3";
+		}
+		else if(com.equals("FileUploadOk3")) {
+			command = new FileUploadOk3Command();
+			command.execute(request, response);
+			viewPage = "/include/message";
+		}
+		else if(com.equals("FileUpload4")) {
+			viewPage += "pdsTest/fileUpload4";
+		}
+		else if(com.equals("FileUploadOk4")) {
+			command = new FileUploadOk4Command();
+			command.execute(request, response);
+			viewPage = "/include/message";
+		}
+		else if(com.equals("Sha")) {
+			viewPage += "sha/sha";
+		}
+		else if(com.equals("ShaOk")) {
+			command = new ShaOkCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("ModalTest")) {
+			viewPage += "modal/modalTest";
 		}
 		viewPage += ".jsp";
 		
